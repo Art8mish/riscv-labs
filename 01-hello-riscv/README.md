@@ -12,34 +12,32 @@
     - `run-qemu` запускает программу в эмуляторе `qemu`, указанном в `QEMU_USER`
 
 3. После компиляции файла `gcc` без флагов исследуем его командой `file` (`make show`). Вывод:
-\```
+```
 build/hello.elf: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=e7798427e5a52989ba13f4dffa989cbb6f1a0530, for GNU/Linux 3.2.0, not stripped
-\```
+```
 Из полученной информации видно, что файл формата - **ELF**, интерпретация битов - **LSB** (Least Significant Bit, т.е. младший значимый бит, *little-endian*), использована динамическая линковка библиотек, скомпилирован для архитектуры **x86-64**
 
 4. Исследование командой `ldd build/hello.elf`:
-\```
+```
 build/hello.elf: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=e7798427e5a52989ba13f4dffa989cbb6f1a0530, for GNU/Linux 3.2.0, not stripped
-\```
+```
     - vDSO (virtual dynamic shared object) - библиотека, которую ядро ​​автоматически включает в каждое пользовательское приложение. Она связана с оптимизацией системных вызовов.
     - libc.so.6 - стандартная C библиотека, также автоматически включаемая во все приложения
     - /lib64/ld-linux-x86-64.so.2 - библиотека линкера **ld**
 
 5. Эмуляция на `qemu`:
-\```
+```
 CC=riscv64-linux-gnu-gcc QEMU_USER=qemu-riscv64 CCFLAGS=-static make run-qemu
-\```
+```
 или же
-\```
+```
 riscv64-linux-gnu-gcc -static hello.c -o build/hello.elf
 qemu-riscv64 build/hello.elf
-\```
-
+```
 В данном случае файл скомпилирован под архетиктуру riscv64, это можно пронаблюдать с помощью `file`
-\```
+```
 build/hello.elf: ELF 64-bit LSB executable, UCB RISC-V, RVC, double-float ABI, version 1 (SYSV), statically linked, BuildID[sha1]=d0e3daa97648f4bbf207a4e523d3c263d015f3ae, for GNU/Linux 4.15.0, not stripped
-\```
-
+```
 При поиске информации с помощью `ldd` выдаёт `not a dynamic executable`, так как файл был скомпилирован с флагом `static`, который включает в сам ELF-файл все подключаемые библиотек. Кстати, размер файла из-за этого сильно разрастается (посмотрим размеры с и без -static с помощью команды `ls -lh build/hello.elf`)"
 <table>
     <tr>
@@ -51,7 +49,6 @@ build/hello.elf: ELF 64-bit LSB executable, UCB RISC-V, RVC, double-float ABI, v
         <td>492K</td>
     </tr>
 </table>
-
 Размер увеличился в 41 раз, что крайне существенно, это является большим минусом статической линковки при создании проектов, состоящих из нескольких файлов (библиотеки в таком случае будут каждый раз включаться в каждый из файлов, а не переиспользоваться, как при динамической линковке)
 
 ## Литература и материалы 
