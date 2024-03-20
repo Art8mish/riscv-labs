@@ -2,8 +2,8 @@
 
 ## Отчёт
 
-1. Установка нужных модулей и тулчейна для riscv64
-2. Разбор <span style="color: orange">  Makefile </span>:
+#### 1. Установка нужных модулей и тулчейна для riscv64
+#### 2. Разбор <span style="color: orange">  Makefile </span>:
     - `.PHONY` нужен для объявления *фальшивых* целей, которые будут выполнятся в любом случае (вне зависимости от состояния каких-либо файлов)
     - `_build_dir: @mkdir -p ${BUILD_DIR}` для создания директории ./build (при указании опции -p перед созданием каталога предварительно создаются все несуществующие вышележащие каталоги.)
     - `hello: hello.c _build_dir` вызывает указанный в переменной `СС` компилятор c флагами `CCFLAGS`
@@ -11,13 +11,13 @@
     - `run` - основная цель: компиляция и запуск программы
     - `run-qemu` запускает программу в эмуляторе `qemu`, указанном в `QEMU_USER`
 
-3. После компиляции файла `gcc` без флагов исследуем его командой `file` (`make show`). Вывод:
+#### 3. После компиляции файла `gcc` без флагов исследуем его командой `file` (`make show`). Вывод:
 ```
 build/hello.elf: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=e7798427e5a52989ba13f4dffa989cbb6f1a0530, for GNU/Linux 3.2.0, not stripped
 ```
 Из полученной информации видно, что файл формата - **ELF**, интерпретация битов - **LSB** (Least Significant Bit, т.е. младший значимый бит, *little-endian*), использована динамическая линковка библиотек, скомпилирован для архитектуры **x86-64**
 
-4. Исследование командой `ldd build/hello.elf`:
+#### 4. Исследование командой `ldd build/hello.elf`:
 ```
 build/hello.elf: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynamically linked, interpreter /lib64/ld-linux-x86-64.so.2, BuildID[sha1]=e7798427e5a52989ba13f4dffa989cbb6f1a0530, for GNU/Linux 3.2.0, not stripped
 ```
@@ -25,7 +25,7 @@ build/hello.elf: ELF 64-bit LSB pie executable, x86-64, version 1 (SYSV), dynami
     - libc.so.6 - стандартная C библиотека, также автоматически включаемая во все приложения
     - /lib64/ld-linux-x86-64.so.2 - библиотека линкера **ld**
 
-5. Эмуляция на `qemu`:
+#### 5. Эмуляция на `qemu`:
 ```
 CC=riscv64-linux-gnu-gcc QEMU_USER=qemu-riscv64 CCFLAGS=-static make run-qemu
 ```

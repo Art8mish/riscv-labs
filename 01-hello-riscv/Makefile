@@ -1,6 +1,6 @@
-CC ?= riscv64-linux-gnu-gcc
-QEMU_USER ?= qemu-riscv64
-CCFLAGS ?=
+CC ?= gcc
+QEMU_USER ?= qemu-x86_64
+CCFLAGS ?= 
 
 BUILD_DIR := build
 .DEFAULT_GOAL := hello

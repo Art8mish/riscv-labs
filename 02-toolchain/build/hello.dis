@@ -1,0 +1,241 @@
+
+build/hello.elf:     file format elf64-littleriscv
+
+Contents of the .eh_frame section (loaded from build/hello.elf):
+
+
+00000000 0000000000000010 00000000 CIE
+  Version:               3
+  Augmentation:          "zR"
+  Code alignment factor: 1
+  Data alignment factor: -4
+  Return address column: 1
+  Augmentation data:     1b
+  DW_CFA_def_cfa_register: r2 (sp)
+  DW_CFA_nop
+
+00000014 0000000000000010 00000018 FDE cie=00000000 pc=0000000000010450..000000000001047e
+  DW_CFA_undefined: r1 (ra)
+  DW_CFA_nop
+
+00000028 ZERO terminator
+
+
+Contents of the .debug_aranges section (loaded from build/hello.elf):
+
+  Length:                   44
+  Version:                  2
+  Offset into .debug_info:  0x0
+  Pointer Size:             8
+  Segment Size:             0
+
+    Address            Length
+    00000000000104f4 000000000000001e 
+    0000000000000000 0000000000000000 
+
+Contents of the .debug_info section (loaded from build/hello.elf):
+
+  Compilation Unit @ offset 0x0:
+   Length:        0x88 (32-bit)
+   Version:       5
+   Unit Type:     DW_UT_compile (1)
+   Abbrev Offset: 0x0
+   Pointer Size:  8
+ <0><c>: Abbrev Number: 2 (DW_TAG_compile_unit)
+    <d>   DW_AT_producer    : (indirect string, offset: 0x2f): GNU C17 12.2.1 20221101 -mtune=rocket -mabi=lp64d -misa-spec=20191213 -march=rv64imafdc_zicsr -g
+    <11>   DW_AT_language    : 29	(C11)
+    <12>   DW_AT_name        : (indirect line string, offset: 0x0): hello.c
+    <16>   DW_AT_comp_dir    : (indirect line string, offset: 0x8): /home/art8mish/risc-v/riscv-labs/02-toolchain
+    <1a>   DW_AT_low_pc      : 0x104f4
+    <22>   DW_AT_high_pc     : 0x1e
+    <2a>   DW_AT_stmt_list   : 0x0
+ <1><2e>: Abbrev Number: 1 (DW_TAG_base_type)
+    <2f>   DW_AT_byte_size   : 8
+    <30>   DW_AT_encoding    : 7	(unsigned)
+    <31>   DW_AT_name        : (indirect string, offset: 0x0): long unsigned int
+ <1><35>: Abbrev Number: 1 (DW_TAG_base_type)
+    <36>   DW_AT_byte_size   : 1
+    <37>   DW_AT_encoding    : 8	(unsigned char)
+    <38>   DW_AT_name        : (indirect string, offset: 0x90): unsigned char
+ <1><3c>: Abbrev Number: 1 (DW_TAG_base_type)
+    <3d>   DW_AT_byte_size   : 2
+    <3e>   DW_AT_encoding    : 7	(unsigned)
+    <3f>   DW_AT_name        : (indirect string, offset: 0x12): short unsigned int
+ <1><43>: Abbrev Number: 1 (DW_TAG_base_type)
+    <44>   DW_AT_byte_size   : 4
+    <45>   DW_AT_encoding    : 7	(unsigned)
+    <46>   DW_AT_name        : (indirect string, offset: 0x5): unsigned int
+ <1><4a>: Abbrev Number: 1 (DW_TAG_base_type)
+    <4b>   DW_AT_byte_size   : 1
+    <4c>   DW_AT_encoding    : 6	(signed char)
+    <4d>   DW_AT_name        : (indirect string, offset: 0x92): signed char
+ <1><51>: Abbrev Number: 1 (DW_TAG_base_type)
+    <52>   DW_AT_byte_size   : 2
+    <53>   DW_AT_encoding    : 5	(signed)
+    <54>   DW_AT_name        : (indirect string, offset: 0x25): short int
+ <1><58>: Abbrev Number: 3 (DW_TAG_base_type)
+    <59>   DW_AT_byte_size   : 4
+    <5a>   DW_AT_encoding    : 5	(signed)
+    <5b>   DW_AT_name        : int
+ <1><5f>: Abbrev Number: 1 (DW_TAG_base_type)
+    <60>   DW_AT_byte_size   : 8
+    <61>   DW_AT_encoding    : 5	(signed)
+    <62>   DW_AT_name        : (indirect string, offset: 0x9e): long int
+ <1><66>: Abbrev Number: 1 (DW_TAG_base_type)
+    <67>   DW_AT_byte_size   : 1
+    <68>   DW_AT_encoding    : 8	(unsigned char)
+    <69>   DW_AT_name        : (indirect string, offset: 0x99): char
+ <1><6d>: Abbrev Number: 4 (DW_TAG_subprogram)
+    <6e>   DW_AT_external    : 1
+    <6e>   DW_AT_name        : (indirect string, offset: 0xa7): main
+    <72>   DW_AT_decl_file   : 1
+    <73>   DW_AT_decl_line   : 2
+    <74>   DW_AT_decl_column : 5
+    <75>   DW_AT_type        : <0x58>
+    <79>   DW_AT_low_pc      : 0x104f4
+    <81>   DW_AT_high_pc     : 0x1e
+    <89>   DW_AT_frame_base  : 1 byte block: 9c 	(DW_OP_call_frame_cfa)
+    <8b>   DW_AT_call_all_tail_calls: 1
+ <1><8b>: Abbrev Number: 0
+
+Contents of the .debug_abbrev section (loaded from build/hello.elf):
+
+  Number TAG (0x0)
+   1      DW_TAG_base_type    [no children]
+    DW_AT_byte_size    DW_FORM_data1
+    DW_AT_encoding     DW_FORM_data1
+    DW_AT_name         DW_FORM_strp
+    DW_AT value: 0     DW_FORM value: 0
+   2      DW_TAG_compile_unit    [has children]
+    DW_AT_producer     DW_FORM_strp
+    DW_AT_language     DW_FORM_data1
+    DW_AT_name         DW_FORM_line_strp
+    DW_AT_comp_dir     DW_FORM_line_strp
+    DW_AT_low_pc       DW_FORM_addr
+    DW_AT_high_pc      DW_FORM_data8
+    DW_AT_stmt_list    DW_FORM_sec_offset
+    DW_AT value: 0     DW_FORM value: 0
+   3      DW_TAG_base_type    [no children]
+    DW_AT_byte_size    DW_FORM_data1
+    DW_AT_encoding     DW_FORM_data1
+    DW_AT_name         DW_FORM_string
+    DW_AT value: 0     DW_FORM value: 0
+   4      DW_TAG_subprogram    [no children]
+    DW_AT_external     DW_FORM_flag_present
+    DW_AT_name         DW_FORM_strp
+    DW_AT_decl_file    DW_FORM_data1
+    DW_AT_decl_line    DW_FORM_data1
+    DW_AT_decl_column  DW_FORM_data1
+    DW_AT_type         DW_FORM_ref4
+    DW_AT_low_pc       DW_FORM_addr
+    DW_AT_high_pc      DW_FORM_data8
+    DW_AT_frame_base   DW_FORM_exprloc
+    DW_AT_call_all_tail_calls DW_FORM_flag_present
+    DW_AT value: 0     DW_FORM value: 0
+
+Raw dump of debug contents of section .debug_line (loaded from build/hello.elf):
+
+  Offset:                      0x0
+  Length:                      86
+  DWARF Version:               5
+  Address size (bytes):        8
+  Segment selector (bytes):    0
+  Prologue Length:             42
+  Minimum Instruction Length:  1
+  Maximum Ops per Instruction: 1
+  Initial value of 'is_stmt':  1
+  Line Base:                   -5
+  Line Range:                  14
+  Opcode Base:                 13
+
+ Opcodes:
+  Opcode 1 has 0 args
+  Opcode 2 has 1 arg
+  Opcode 3 has 1 arg
+  Opcode 4 has 1 arg
+  Opcode 5 has 1 arg
+  Opcode 6 has 0 args
+  Opcode 7 has 0 args
+  Opcode 8 has 0 args
+  Opcode 9 has 1 arg
+  Opcode 10 has 0 args
+  Opcode 11 has 0 args
+  Opcode 12 has 1 arg
+
+ The Directory Table (offset 0x22, lines 1, columns 1):
+  Entry	Name
+  0	(indirect line string, offset: 0x8): /home/art8mish/risc-v/riscv-labs/02-toolchain
+
+ The File Name Table (offset 0x2c, lines 2, columns 2):
+  Entry	Dir	Name
+  0	0	(indirect line string, offset: 0x0): hello.c
+  1	0	(indirect line string, offset: 0x0): hello.c
+
+ Line Number Statements:
+  [0x00000036]  Set column to 12
+  [0x00000038]  Extended opcode 2: set Address to 0x104f4
+  [0x00000043]  Special opcode 6: advance Address by 0 to 0x104f4 and Line by 1 to 2
+  [0x00000044]  Set column to 14
+  [0x00000046]  Advance Line by 0 to 2
+  [0x00000048]  Advance PC by fixed size amount 8 to 0x104fc
+  [0x0000004b]  Copy (view 1)
+  [0x0000004c]  Set column to 42
+  [0x0000004e]  Advance Line by 0 to 2
+  [0x00000050]  Advance PC by fixed size amount 12 to 0x10508
+  [0x00000053]  Copy (view 2)
+  [0x00000054]  Advance PC by fixed size amount 10 to 0x10512
+  [0x00000057]  Extended opcode 1: End of Sequence
+
+
+Contents of the .debug_frame section (loaded from build/hello.elf):
+
+
+00000000 000000000000000c ffffffff CIE
+  Version:               3
+  Augmentation:          ""
+  Code alignment factor: 1
+  Data alignment factor: -4
+  Return address column: 1
+
+  DW_CFA_def_cfa_register: r2 (sp)
+  DW_CFA_nop
+
+00000010 000000000000002c 00000000 FDE cie=00000000 pc=00000000000104f4..0000000000010512
+  DW_CFA_advance_loc: 2 to 00000000000104f6
+  DW_CFA_def_cfa_offset: 16
+  DW_CFA_advance_loc: 4 to 00000000000104fa
+  DW_CFA_offset: r1 (ra) at cfa-8
+  DW_CFA_offset: r8 (s0) at cfa-16
+  DW_CFA_advance_loc: 2 to 00000000000104fc
+  DW_CFA_def_cfa: r8 (s0) ofs 0
+  DW_CFA_advance_loc: 16 to 000000000001050c
+  DW_CFA_restore: r1 (ra)
+  DW_CFA_advance_loc: 2 to 000000000001050e
+  DW_CFA_restore: r8 (s0)
+  DW_CFA_def_cfa: r2 (sp) ofs 16
+  DW_CFA_advance_loc: 2 to 0000000000010510
+  DW_CFA_def_cfa_offset: 0
+  DW_CFA_nop
+  DW_CFA_nop
+
+Contents of the .debug_str section (loaded from build/hello.elf):
+
+  0x00000000 6c6f6e67 20756e73 69676e65 6420696e long unsigned in
+  0x00000010 74007368 6f727420 756e7369 676e6564 t.short unsigned
+  0x00000020 20696e74 0073686f 72742069 6e740047  int.short int.G
+  0x00000030 4e552043 31372031 322e322e 31203230 NU C17 12.2.1 20
+  0x00000040 32323131 3031202d 6d74756e 653d726f 221101 -mtune=ro
+  0x00000050 636b6574 202d6d61 62693d6c 70363464 cket -mabi=lp64d
+  0x00000060 202d6d69 73612d73 7065633d 32303139  -misa-spec=2019
+  0x00000070 31323133 202d6d61 7263683d 72763634 1213 -march=rv64
+  0x00000080 696d6166 64635f7a 69637372 202d6700 imafdc_zicsr -g.
+  0x00000090 756e7369 676e6564 20636861 72006c6f unsigned char.lo
+  0x000000a0 6e672069 6e74006d 61696e00          ng int.main.
+
+Contents of the .debug_line_str section (loaded from build/hello.elf):
+
+  0x00000000 68656c6c 6f2e6300 2f686f6d 652f6172 hello.c./home/ar
+  0x00000010 74386d69 73682f72 6973632d 762f7269 t8mish/risc-v/ri
+  0x00000020 7363762d 6c616273 2f30322d 746f6f6c scv-labs/02-tool
+  0x00000030 63686169 6e00                       chain.
+
