@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "cmath": "cpp",
+        "common_library.h": "c",
+        "solve_square.h": "c",
+        "tests_square.h": "c",
+        "io.h": "c",
+        "ctype.h": "c",
+        "math.h": "c",
+        "assert.h": "c"
+    }
+}

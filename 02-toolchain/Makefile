@@ -2,8 +2,7 @@ CC ?= riscv64-unknown-linux-gnu-gcc
 QEMU_USER ?= qemu-riscv64
 
 CFLAGS ?= 
-QEMU_FLAG ?= -L 
-QEMU_PATH ?= /opt/sc-dt/riscv-gcc/sysroot/
+QEMU_FLAGS = -L /opt/sc-dt/riscv-gcc/sysroot/
 
 BUILD_DIR := build
 .DEFAULT_GOAL := hello
@@ -35,7 +34,7 @@ run-qemu: hello
 	${QEMU_USER} ${QEMU_FLAGS} ${BUILD_DIR}/hello.elf
 
 run-qemu-gdb: hello
-	${QEMU_USER} ${QEMU_FLAGS} ${QEMU_PATH} -g 1234 ${BUILD_DIR}/hello.elf
+	${QEMU_USER} ${QEMU_FLAGS} -g 1234 ${BUILD_DIR}/hello.elf
 
 clean:
 	rm -r ${BUILD_DIR}
