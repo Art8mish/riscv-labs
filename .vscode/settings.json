@@ -9,6 +9,8 @@
         "math.h": "c",
         "assert.h": "c",
         "stdio.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "typeinfo": "c",
+        "dlfcn.h": "c"
     }
 }
