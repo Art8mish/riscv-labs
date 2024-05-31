@@ -1,5 +1,7 @@
-# Поверхностное исследование* LD_PRELOAD
-*исследование проводится с sc-dt релизом
+# Исследование безопасности RISC-V приложений. LD_PRELOAD.
+
+Исследование проводится с [Syntacore Development Toolkit](https://syntacore.com/). 
+*sc-dt релиз
 
 ## Суть использования LD_PRELOAD
 
@@ -108,8 +110,7 @@ riscv64-unknown-linux-gnu-gcc   ./obj/app.o -o ./build/app
 
 qemu-riscv64 -L /opt/sc-dt/riscv-gcc/sysroot/ -E LD_PRELOAD="$(PWD)/obj/hook.so" ./build/app
 
-Copied string: Hello, world!
-
+Copied string: Hello, world
 ```
 При компиляции *hook.c* из *hook2.c* нужно добавить флаг `-ldl`, чтобы подключить библиотеку для *dl-функций*.
 
